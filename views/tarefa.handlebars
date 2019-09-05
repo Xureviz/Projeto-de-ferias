@@ -1,0 +1,13 @@
+<h1>Tarefas agendadas</h1>
+
+{{#each tarefas}}
+    <b>Numero da tarefa : {{id}}</b><br>
+    Titulo: {{titulo}}<br>
+    Comentario: {{comentario}}<br>
+    Tarefa criada: {{#formatDate createdAt}}{{/formatDate}}<br>
+    <a href = 'deltarefa/{{id}}'><button>Apagar Tarefa</button></a>
+
+    <a href = 'update/{{id}}'><button>Editar Tarefa</button></a>
+    
+    <hr>
+{{/each}}    
