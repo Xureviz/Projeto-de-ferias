@@ -4,10 +4,9 @@
     <b>Numero da tarefa : {{id}}</b><br>
     Titulo: {{titulo}}<br>
     Comentario: {{comentario}}<br>
-    Tarefa criada: {{#formatDate createdAt}}{{/formatDate}}<br>
+    Tarefa criada: {{#formatDate createdAt}}{{/formatDate}}<br><br>
     <a href = 'deltarefa/{{id}}'><button>Apagar Tarefa</button></a>
 
-    <a href = 'update/{{id}}'><button>Editar Tarefa</button></a>
     
     <hr>
 {{/each}}    

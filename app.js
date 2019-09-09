@@ -21,6 +21,9 @@ app.use(bodyParser.json())
 //localhost
 app.listen(3030);
 
+app.get('/', function (req, res){
+    res.send('Hi There')
+})
 //rotas
 
 app.get('/intro', function(req, res){
@@ -47,7 +50,7 @@ app.post('/addtarefa', function(req, res){
         res.send('Erro: Tarefa não cadastrada :' + erro)
     })
 })
-
+//DELETAR TAREFA
 app.get('/deltarefa/:id', function(req, res){
     Tarefa.destroy({
         where: {'id': req.params.id}
@@ -58,24 +61,28 @@ app.get('/deltarefa/:id', function(req, res){
     })
 })
 
-/*app.get('/update/:id', function(req, res){
-    Tarefa.put({
-        where: {'id' : req.params.id}
-    }).then(function(){
-        res.redirect('/tarefa')
-    }).catch(function(erro){
-        res.send('Não foi possivel atualizar os dados')
+//Edit na tarefa
+app.put('/addterefa', (req, res) =>{
+    let trf = req.body;
+    var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
+    CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
+    mysqlConnection.query(sql,[trf.id, trf.titulo, trf.comentario, trf.createdAt], (err, rows, fields) =>{
+        if (!err)
+            res.send('Tarefa atualizada');
+        else
+            console.log('Tarefa não atualizada com sucesso: ' + err)
     })
-})*/
-/*app.put('/update/update/:id', (req, res, next) => {
-    let id = {
-      _id: ObjectID(req.params.id)
-    };
+})
+/*checkbox
+app.get('/cadterefa', function myFunction() {
+    var checkBox = document.getElementById("myCheck");
 
-    dbase.collection("name").update({_id: id}, {$set:{'first_name': req.body.first_name, 'last_name': req.body.last_name}}, (err, result) => {
-      if(err) {
-        throw err;
-      }
-      res.send('user updated sucessfully');
-    });
-});*/
+    var text = document.getElementById("text");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+})*/
