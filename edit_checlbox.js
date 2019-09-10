@@ -10,7 +10,7 @@ app.put('/addterefa', (req, res) =>{
             console.log('Tarefa não atualizada com sucesso: ' + err)
     })
 })
-/*checkbox
+checkbox
 app.get('/cadterefa', function myFunction() {
     var checkBox = document.getElementById("myCheck");
 
@@ -22,4 +22,12 @@ app.get('/cadterefa', function myFunction() {
     } else {
       text.style.display = "none";
     }
-})*/
+})*/<p><b>Marque a caixa caso queira editar uma tarefa</b></p>
+<input type='checkbox' id='myCheck' onclick='myFunction()'><input type='text' name='id'><br><br>
+<p id="text" style="display:none">Checkbox is CHECKED!</p><br>
+
+<div>
+        Marque a caixa caso queira editar uma tarefa <input type="checkbox" id="trigger" name="question">
+    </div><br>
+    <div id="hidden_fields">Digite o numero da tarefa: <input type="text" id="hidden_field" name="hidden">
+    </div><br>
