@@ -7,8 +7,8 @@ const Tarefa = require('./models/Tarefa');
 
 app.engine('handlebars', handlebars({defaultLayout: 'main', 
 helpers: {
-    formatDate: () => {
-        return moment().format('Do MMMM YYYY, h:mm:ss a') 
+    formatDate: (date) => {
+        return moment(date).format('Do MMMM YYYY, h:mm:ss a') 
     }
 }
 }))
@@ -42,6 +42,7 @@ app.get('/cadtarefa', function(req, res){
 
 app.post('/addtarefa', function(req, res){
     Tarefa.create({
+        id: req.body.id,
         titulo: req.body.titulo,
         comentario: req.body.comentario
     }).then(function(){
@@ -61,8 +62,10 @@ app.get('/deltarefa/:id', function(req, res){
     })
 })
 
-//Edit na tarefa
-app.put('/addterefa', (req, res) =>{
+
+
+//Update na tarefa
+app.put('/tarefa', (req, res) =>{
     let trf = req.body;
     var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
     CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
@@ -73,6 +76,9 @@ app.put('/addterefa', (req, res) =>{
             console.log('Tarefa não atualizada com sucesso: ' + err)
     })
 })
+
+
+
 /*checkbox
 app.get('/cadterefa', function myFunction() {
     var checkBox = document.getElementById("myCheck");
