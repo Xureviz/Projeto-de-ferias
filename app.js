@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const Tarefa = require('./models/Tarefa');
 
+
+
 app.engine('handlebars', handlebars({defaultLayout: 'main', 
 helpers: {
     formatDate: (date) => {
@@ -62,18 +64,18 @@ app.get('/deltarefa/:id', function(req, res){
     })
 })
 
-
-
 //Update na tarefa
 app.put('/tarefa', (req, res) =>{
+    
     let trf = req.body;
     var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
     CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
+    debugger;
     mysqlConnection.query(sql,[trf.id, trf.titulo, trf.comentario, trf.createdAt], (err, rows, fields) =>{
-        if (!err)
-            res.send('Tarefa atualizada');
-        else
-            console.log('Tarefa não atualizada com sucesso: ' + err)
+        if(!err)
+            res.send('Tarefa atualizada com sucesso');
+        else   
+            console.log(err);
     })
 })
 
