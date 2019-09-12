@@ -31,3 +31,5 @@ app.get('/cadterefa', function myFunction() {
     </div><br>
     <div id="hidden_fields">Digite o numero da tarefa: <input type="text" id="hidden_field" name="hidden">
     </div><br>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
