@@ -10,6 +10,35 @@ app.put('/addterefa', (req, res) =>{
             console.log('Tarefa não atualizada com sucesso: ' + err)
     })
 })
+
+    /*
+    let trf = req.body;
+    var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
+    CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
+    debugger;
+    mysqlConnection.query(sql,[trf.id, trf.titulo, trf.comentario, trf.createdAt], (err, rows, fields) =>{
+        if(!err)
+            res.send('Tarefa atualizada com sucesso');
+        else   
+            console.log(err);
+    })
+})
+
+
+
+checkbox
+app.get('/cadterefa', function myFunction() {
+    var checkBox = document.getElementById("myCheck");
+
+    var text = document.getElementById("text");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+})*/
 checkbox
 app.get('/cadterefa', function myFunction() {
     var checkBox = document.getElementById("myCheck");
@@ -33,3 +62,39 @@ app.get('/cadterefa', function myFunction() {
     </div><br>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+
+
+
+    /*
+//Update na tarefa
+app.put('/tarefa/:id', function (req, res) {
+    var tarefa = new Tarefa({
+        id: req.body.id,
+        titulo: req.body.titulo,
+        comentario: req.body.comentario
+    });
+    var upsertData = tarefa.toObject();
+    delete upsertData.id;
+    return Tarefa.update({id: req.params.id}, upsertData, {upsert: true}, function(err){
+        if(!err){
+            return res.send('Updated');
+        } else {
+            return Response.send('Erro, tarefa nao cadastrada: ' + err)
+        }
+    })
+})*/
+
+//Update na tarefa2
+app.put('/tarefa', (req, res) =>{
+    
+    let trf = req.body;
+    var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
+    CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
+    debugger;
+    mysqlConnection.query(sql,[trf.id, trf.titulo, trf.comentario, trf.createdAt], (err, rows, fields) =>{
+        if(!err)
+            res.send('Tarefa atualizada com sucesso');
+        else   
+            console.log(err);
+    })
+})
