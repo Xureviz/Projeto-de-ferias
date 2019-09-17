@@ -1,12 +1,16 @@
-<h1>Tarefas agendadas</h1>
-
+<div class='w3-container'>
+    <h1>Tarefas agendadas</h1>
+</div>
 {{#each tarefas}}
-    <b>Numero da tarefa : {{id}}</b><br>
-    Titulo: {{titulo}}<br>
-    Comentario: {{comentario}}<br>
-    Tarefa criada: {{#formatDate createdAt}}{{/formatDate}}<br><br>
-    <a href = 'deltarefa/{{id}}'><button>Apagar Tarefa</button></a>
+    <div class='w3-container'>
+        <b>Numero da tarefa : {{id}}</b><br>
+        Titulo: {{titulo}}<br>
+        Comentario: {{comentario}}<br>
+        Tarefa criada: {{#formatDate createdAt}}{{/formatDate}}<br><br>
+        <button onclick="location.href = 'http://localhost:3030/edittarefa';"   id="myButton"  class="btn btn-primary" >Editar tarefa</button> 
+        <a href = 'deltarefa/{{id}}'><button class="btn btn-danger">Apagar Tarefa </button></a>
+        <hr>
+    </div>
+{{/each}}   
 
-    
-    <hr>
-{{/each}}    
+    <button onclick="location.href = 'http://localhost:3030/cadtarefa';"   id="tarefabutton"  class="btn btn-primary" >Cadastrar Tarefa</button>

@@ -1,18 +1,19 @@
-<h1>Cadastrar tarefa</h1> tarefas cadastradas<br><br>
-<form action="/addtarefa" method="POST">
+<div class='w3-container'>
+    <h1>Cadastrar tarefa</h1>
+    <form action="/addtarefa" method="POST">
 
-    <label>Numero da tarefa</label>
-    <input type="number" name="id"> <br><br>
+        <label>Nº Tarefa:</label>
+        <input type="number" name="id"> <br><br>
 
-    <label>Titulo: </label>
-    <input type="text" name="titulo"> <br><br>
+        <label>Titulo: </label>
+        <input type="text" name="titulo"> <br><br>
 
-    <label>Comentário:</label>
-    <input type="text" name="comentario"> <br><br>
+        <label>Detalhes:</label>
+        <input type="text" name="comentario"> <br><br>
 
         
-    <button class= "btn btn-default" type="submit">Cadastrar tarefa</button>
+        <button class= "btn btn-primary" type="submit">Cadastrar tarefa</button>
 
-    
-  
-</form>
+    </form>
+    <button onclick="location.href = 'http://localhost:3030/tarefa';"   id="tarefabutton"  class="btn btn-primary" >Listar Tarefa</button>
+</div>
