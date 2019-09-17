@@ -32,6 +32,12 @@ app.get('/intro', function(req, res){
     res.render('intro');
 });
 
+app.get('/edittarefa', function(req,res){
+    Tarefa.findAll({order: [['id', 'ASC']]}).then(function(tarefas){
+        res.render('edittarefa', {tarefas: tarefas});
+    })
+}) 
+
 app.get('/Tarefa', function(req, res){
     Tarefa.findAll({order: [['id', 'ASC']]}).then(function(tarefas){
         res.render('tarefa', {tarefas: tarefas}); 
@@ -60,7 +66,7 @@ app.get('/deltarefa/:id', function(req, res){
     }).then(function(){
         res.redirect('/tarefa')
     }).catch(function(erro){
-        res.send('Tarefa não foi deletada com sucesso')
+        res.send('Tarefa não foi deletada com sucesso: ' + erro)
     })
 })
 
