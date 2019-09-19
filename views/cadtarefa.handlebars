@@ -1,19 +1,10 @@
-<div class='w3-container'>
-    <h1>Cadastrar tarefa</h1>
+<div class="form-style-5">
     <form action="/addtarefa" method="POST">
-
-        <label>Nº Tarefa:</label>
-        <input type="number" name="id"> <br><br>
-
-        <label>Titulo: </label>
-        <input type="text" name="titulo"> <br><br>
-
-        <label>Detalhes:</label>
-        <input type="text" name="comentario"> <br><br>
-
-        
-        <button class= "btn btn-primary" type="submit">Cadastrar tarefa</button>
-
+        <fieldset>
+            <legend><span class="number">1</span> Cadastrar tarefa</legend>
+                <input type="number" name="id" placeholder="Numero da tarefa">
+                <input type="text" name="titulo" placeholder="Titulo *">
+                <textarea name="comentario" placeholder="Comentario"></textarea>
+        <input type="submit" value="Cadastrar tarefa" />
     </form>
-    <button onclick="location.href = 'http://localhost:3030/tarefa';"   id="tarefabutton"  class="btn btn-primary" >Listar Tarefa</button>
 </div>
