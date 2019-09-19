@@ -20,6 +20,8 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(express.static(__dirname + '/views'));
+
 //localhost
 app.listen(3030);
 
@@ -69,8 +71,18 @@ app.get('/deltarefa/:id', function(req, res){
         res.send('Tarefa não foi deletada com sucesso: ' + erro)
     })
 })
-
-//Update na tarefa
+/*
+app.get('/edtarefa/:id', function(req, res){
+    Tarefa.destroy({
+        where: {'id': req.params.id}
+    }).then(function(){
+        res.redirect('/modal')
+    }).catch(function(erro){
+        res.send('Tarefa não foi deletada com sucesso: ' + erro)
+    })
+});
+*/
+/*Update na tarefa
 app.put('/tarefa', (req, res) =>{
     
     let trf = req.body;
@@ -84,10 +96,10 @@ app.put('/tarefa', (req, res) =>{
             console.log(err);
     })
 })
+*/
 
 
 
-/*checkbox
 app.get('/cadterefa', function myFunction() {
     var checkBox = document.getElementById("myCheck");
 
@@ -99,4 +111,4 @@ app.get('/cadterefa', function myFunction() {
     } else {
       text.style.display = "none";
     }
-})*/
+})
