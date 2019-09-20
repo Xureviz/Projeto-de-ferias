@@ -71,44 +71,22 @@ app.get('/deltarefa/:id', function(req, res){
         res.send('Tarefa não foi deletada com sucesso: ' + erro)
     })
 })
-/*
-app.get('/edtarefa/:id', function(req, res){
-    Tarefa.destroy({
-        where: {'id': req.params.id}
-    }).then(function(){
-        res.redirect('/modal')
-    }).catch(function(erro){
-        res.send('Tarefa não foi deletada com sucesso: ' + erro)
-    })
-});
-*/
-/*Update na tarefa
-app.put('/tarefa', (req, res) =>{
-    
-    let trf = req.body;
-    var sql = 'SET @id = ?; SET @titulo = ?; SET @comentario = ?; SET @createdAt = ?; \
-    CALL new_procedure(@id,@titulo,@comentario,@createdAt);';
-    debugger;
-    mysqlConnection.query(sql,[trf.id, trf.titulo, trf.comentario, trf.createdAt], (err, rows, fields) =>{
-        if(!err)
-            res.send('Tarefa atualizada com sucesso');
-        else   
-            console.log(err);
+
+//UPDATE 
+app.post('/edtarefa', function(req, res){
+    const id = req.body.id;
+    const titulo = req.body.titulo;
+    const comentario = req.body.comentario;
+    Tarefa.update({
+        id: id,
+        titulo : titulo,
+        comentario : comentario
+    },
+        {returning: true, where:{id:id}}
+    ).then(function(){
+        res.redirect('/tarefa')
+    }).catch(function(err){
+        res.send('erro: ' + err)
     })
 })
-*/
 
-
-
-app.get('/cadterefa', function myFunction() {
-    var checkBox = document.getElementById("myCheck");
-
-    var text = document.getElementById("text");
-  
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true){
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-})
