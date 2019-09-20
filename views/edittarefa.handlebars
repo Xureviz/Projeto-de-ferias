@@ -2,7 +2,7 @@
     <form action="/edtarefa" method="POST">
         <fieldset>
             <legend><span class="number">1</span> Editar tarefa</legend>
-                <input type="number" name="idtarefa" placeholder= "Numero da tarefa">
+                <input type="number" name="id" placeholder= "Numero da tarefa">
                 <input type="text" name="titulo" placeholder="Novo Titulo *">
                 <textarea name="comentario" placeholder="Novo Comentario"></textarea>
         <input type="submit" value="Editar tarefa" />
@@ -10,3 +10,5 @@
 </div>
 
 
+<button onclick="location.href = 'http://localhost:3030/cadtarefa';"   id="cadtarefabutton"  class="btn btn-primary" >Cadastrar Tarefa</button>
+<button onclick="location.href = 'http://localhost:3030/tarefa';"   id="tarefabutton"  class="btn btn-primary" >Listar tarefas</button>
